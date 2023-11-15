@@ -42,9 +42,9 @@ sigma_d = np.full(d.shape, 0.002)
 # Definizione dell’accelerazione di gravita‘. 
 g = 9.81 
 def period_model(d, l): 
- """Modello per il periodo del pendolo. 
- """ 
- return 2.0 * np.pi * np.sqrt((l**2.0 / 12.0 + d**2.0) / (g * d)) 
+    """Modello per il periodo del pendolo. 
+    """ 
+    return 2.0 * np.pi * np.sqrt((l**2.0 / 12.0 + d**2.0) / (g * d)) 
 plt.figure("Periodo")
 # Scatter plot dei dati. 
 plt.errorbar(d, T, sigma_T, sigma_d, fmt="o") 
@@ -56,7 +56,7 @@ sigma_l = np.sqrt(pcov[0, 0])
 print(l_hat, sigma_l) 
 # Grafico del modello di best-fit. 
 x = np.linspace(0.01, 0.5, 100) 
-plt.plot(x, period_model(x, l_hat), marker='.')
+plt.plot(x, period_model(x, l_hat))
 plt.errorbar(d, T, yerr=sigma_T, xerr=sigma_d, fmt='.') 
 plt.xlabel("d [m]") 
 plt.ylabel("Periodo [s]")
