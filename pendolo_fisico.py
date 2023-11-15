@@ -1,6 +1,27 @@
-import numpy as np 
+import numpy as np
+import math
 from matplotlib import pyplot as plt 
 from scipy.optimize import curve_fit 
+class Number:
+    def __init__(self, arr):
+        self.x = arr
+        self.n = 7
+        self.average_value = 0
+    def media(self):
+        sum = 0
+        for x in self.x:
+            sum = sum + x
+        self.average_value = sum/len(self.x)
+        return(self.average_value)
+    def deviazione_standard(self):
+        sum = 0
+        if self.average_value != 0:
+            for x in self.x:
+                sum = sum + pow(x - self.average_value, 2)
+        self.deviazione = math.sqrt(sum * (len(self.x)))
+        return(self.deviazione)
+arr1 = Number([15.9, 15.87, 15.79])
+print(f"La media e': {arr1.media()} e la deviazione standard e': {arr1.deviazione_standard()}")
 # Dati---mettete le vostre misure! 
 # Qui potete anche leggere i dati da file, usando il metodo np.loadtxt(), 
 # se lo trovate comodo. 
