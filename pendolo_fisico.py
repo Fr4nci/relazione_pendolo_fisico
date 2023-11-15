@@ -65,5 +65,6 @@ sigma_r = sigma_T
 plt.savefig("massa_raggio.pdf") 
 plt.show()
 plt.plot(d, r, linestyle='', marker='o')
+plt.axhline(y = 0, color = 'gray', linestyle = '-') 
 plt.errorbar(d, r, sigma_r, sigma_d, fmt="o")
 plt.show()
