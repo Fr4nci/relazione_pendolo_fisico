@@ -1,7 +1,8 @@
 import numpy as np
 import math
 from matplotlib import pyplot as plt 
-from scipy.optimize import curve_fit 
+from scipy.optimize import curve_fit
+data = np.loadtxt(fname="dati.txt", dtype=np.float64)
 class Number:
     def __init__(self, arr):
         self.x = arr
@@ -20,18 +21,24 @@ class Number:
                 sum = sum + pow(x - self.average_value, 2)
         self.deviazione = math.sqrt(sum * (len(self.x)))
         return(self.deviazione)
-arr1 = Number([15.9, 15.87, 15.79])
-print(f"La media e': {arr1.media()} e la deviazione standard e': {arr1.deviazione_standard()}")
+T = np.ones(len(data))
+sigma_T = np.ones(len(data))
+for el in range(0, len(data)):
+    arr = Number(data[el])
+    T[el] = arr.media()
+    sigma_T[el] = arr.deviazione_standard()
+T = T/10
+sigma_T = sigma_T/10
 # Dati---mettete le vostre misure! 
 # Qui potete anche leggere i dati da file, usando il metodo np.loadtxt(), 
 # se lo trovate comodo. 
 L = np.array([0.95, 0.85, 0.75, 0.65, 0.55, 0.45, 0.35, 0.25, 0.15, 0.05])
 d = abs(L - 0.525)
 sigma_d = np.full(d.shape, 0.002) 
-T = np.array([15.9, 15.4, 15.7, 18.3, 38.1, 22.7, 16.7, 15.61, 15.7, 16.3])
-T = T/10 
-sigma_T = np.array([0.2, 0.1, 0.1, 0.2, 0.2, 0.1, 0.1, 0.06, 0.1, 0.1])
-sigma_T = sigma_T/10 
+# T = np.array([15.9, 15.4, 15.7, 18.3, 38.1, 22.7, 16.7, 15.61, 15.7, 16.3])
+# T = T/10 
+# sigma_T = np.array([0.2, 0.1, 0.1, 0.2, 0.2, 0.1, 0.1, 0.06, 0.1, 0.1])
+# sigma_T = sigma_T/10 
 # Definizione dell’accelerazione di gravita‘. 
 g = 9.81 
 def period_model(d, l): 
