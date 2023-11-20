@@ -61,7 +61,7 @@ plt.errorbar(d, T, yerr=sigma_T, xerr=sigma_d, fmt='.')
 plt.xlabel("d [m]") 
 plt.ylabel("Periodo [s]")
 plt.grid(which="both", ls="dashed", color="gray")
-r = T - period_model(d, l=1.05)
+r = T - period_model(d, l_hat)
 sigma_r = sigma_T
 plt.savefig("massa_raggio.pdf") 
 plt.show()

@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage[a4paper]{geometry}
 \usepackage{bookmark}
+\usepackage{listings}
 \usepackage{amsmath,amsfonts,amsthm,amssymb,mathtools}
 \usepackage[italian]{babel}
 \usepackage{graphicx}
@@ -8,7 +9,32 @@
 \title{\Huge{Pendolo fisico}}
 \author{\huge{Giosué Aiello, Domenico Fenili, Francesco Sermi}}
 \date{14 Novembre 2023}
+\usepackage{xcolor}
 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{code}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=code}
 \begin{document}
 
 \maketitle
@@ -66,9 +92,9 @@ Possiamo quindi riscrivere la formula nella seguente maniera:
 \begin{itemize}
 	\item Strumenti 
 	\begin{itemize}
-		\item Metro a nastro, risoluzione $0. 1 cm$;
-		\item Calibro ventesimale, risoluzione $0.05 mm$;
-		\item Cronometro, risoluzione $0.01 s$
+		\item Metro a nastro, risoluzione $0.1$ cm;
+		\item Calibro ventesimale, risoluzione $0.05$ mm;
+		\item Cronometro, risoluzione $0.01 $ s.
 	\end{itemize}
 	\item Materiali
 	\begin{itemize}
@@ -81,7 +107,7 @@ Possiamo quindi riscrivere la formula nella seguente maniera:
 
 --Completare
 
-\section{Analisi dei dati}
+Per fare le misurazioni
 
 \begin{table}[h!]
 	\hspace{-0.1\textwidth}	
@@ -139,5 +165,136 @@ Possiamo quindi riscrivere la formula nella seguente maniera:
 		\end{tabular}
 	\end{minipage}
 \end{table}
+\begin{table}[h!]
+	\hspace{-0.1\textwidth}	
+	\begin{minipage}{0.1\textwidth}
+			\begin{tabular}{ | r | c | c | }
+    				\hline
+    				\multirow{2}{5em}{Numero prova} & $\tau$ (s) & $d$ (cm) \\
+    				& $\pm 0.01$ & $\pm 0.1$ \\
+    				\hline
+    				1 & 15.75 & \multirow{7}{*}{75.0} \\ \cline{1-2}
+    				2 & 15.66 & \\ \cline{1-2}
+    				3 & 15.73 & \\ \cline{1-2}
+    				4 & 15.61 & \\ \cline{1-2}
+    				5 & 15.67 & \\ \cline{1-2}
+    				6 & 15.80 & \\ \cline{1-2}
+    				7 & 15.67 & \\ \cline{1-2}
+    				\hline
+			\end{tabular}
+	\end{minipage}
+	\hspace{0.3\textwidth}
+	\begin{minipage}{0.1\textwidth}
+			\begin{tabular}{ | r | c | c | }
+    				\hline
+    				\multirow{2}{5em}{Numero prova} & $\tau$ (s) & $d$ (cm) \\
+    				& $\pm 0.01$ & $\pm 0.1$ \\
+    				\hline
+    				1 & 15.75 & \multirow{7}{*}{75.0} \\ \cline{1-2}
+    				2 & 15.66 & \\ \cline{1-2}
+    				3 & 15.73 & \\ \cline{1-2}
+    				4 & 15.61 & \\ \cline{1-2}
+    				5 & 15.67 & \\ \cline{1-2}
+    				6 & 15.80 & \\ \cline{1-2}
+    				7 & 15.67 & \\ \cline{1-2}
+    				\hline
+			\end{tabular}
+	\end{minipage}
+	\hspace{0.3\textwidth}
+	\begin{minipage}{0.1\textwidth}
+			\begin{tabular}{ | r | c | c | }
+    				\hline
+    				\multirow{2}{5em}{Numero prova} & $\tau$ (s) & $d$ (cm) \\
+    				& $\pm 0.01$ & $\pm 0.1$ \\
+    				\hline
+    				1 & 15.75 & \multirow{7}{*}{75.0} \\ \cline{1-2}
+    				2 & 15.66 & \\ \cline{1-2}
+    				3 & 15.73 & \\ \cline{1-2}
+    				4 & 15.61 & \\ \cline{1-2}
+    				5 & 15.67 & \\ \cline{1-2}
+    				6 & 15.80 & \\ \cline{1-2}
+    				7 & 15.67 & \\ \cline{1-2}
+    				\hline
+			\end{tabular}
+	\end{minipage}
+\end{table}
+\section{Analisi dei dati}
 
+Per minimizzare le incertezze sul periodo di oscillazione (che \textbf{non} coincidono con la risoluzione del cronometro o al tempo di reazione di un individuo medio), abbiamo considerato i vari valori di $\tau$ misurati ad una certa distanza dal centro di massa e ne abbiamo calcolato il valor medio e la deviazione standard, che abbiamo poi diviso per il numero di oscillazioni fissato che abbiamo misurato. \\
+Successivamente, i valori medi che noi abbiamo misurato ad una certa distanza sono stati utilizzati per costruire il grafico del fit lineare con Python, così come i valori di deviazione standard che sono stati inseriti all'interno di un altro array per essere usati come gli errori sulle ordinate di ogni singolo valore medio. \\
+\begin{figure}[hptb]
+	\begin{lstlisting}[language=Python]
+import numpy as np
+import math
+from matplotlib import pyplot as plt 
+from scipy.optimize import curve_fit
+data = np.loadtxt(fname="dati.txt", dtype=np.float64)
+class Number:
+    def __init__(self, arr):
+        self.x = arr
+        self.n = 7
+        self.average_value = 0
+    def media(self):
+        sum = 0
+        for x in self.x:
+            sum = sum + x
+        self.average_value = sum/len(self.x)
+        return(self.average_value)
+    def deviazione_standard(self):
+        sum = 0
+        if self.average_value != 0:
+            for x in self.x:
+                sum = sum + pow(x - self.average_value, 2)
+        self.deviazione = math.sqrt(sum * (len(self.x)))
+        return(self.deviazione)
+T = np.ones(len(data))
+sigma_T = np.ones(len(data))
+for el in range(0, len(data)):
+    arr = Number(data[el])
+    T[el] = arr.media()
+    sigma_T[el] = arr.deviazione_standard()
+T = T/10
+sigma_T = sigma_T/10
+# Dati---mettete le vostre misure! 
+# Qui potete anche leggere i dati da file, usando il metodo np.loadtxt(), 
+# se lo trovate comodo. 
+L = np.array([0.95, 0.85, 0.75, 0.65, 0.55, 0.45, 0.35, 0.25, 0.15, 0.05])
+d = abs(L - 0.525)
+sigma_d = np.full(d.shape, 0.002) 
+# T = np.array([15.9, 15.4, 15.7, 18.3, 38.1, 22.7, 16.7, 15.61, 15.7, 16.3])
+# T = T/10 
+# sigma_T = np.array([0.2, 0.1, 0.1, 0.2, 0.2, 0.1, 0.1, 0.06, 0.1, 0.1])
+# sigma_T = sigma_T/10 
+# Definizione dell'accelerazione di gravita'. 
+g = 9.81 
+def period_model(d, l): 
+    """Modello per il periodo del pendolo. 
+    """ 
+    return 2.0 * np.pi * np.sqrt((l**2.0 / 12.0 + d**2.0) / (g * d)) 
+plt.figure("Periodo")
+# Scatter plot dei dati. 
+plt.errorbar(d, T, sigma_T, sigma_d, fmt="o") 
+# Fit---notate che questo e' un fit ad un solo parametro. 
+popt, pcov = curve_fit(period_model, d, T, sigma=sigma_T) 
+l_hat = popt[0] 
+sigma_l = np.sqrt(pcov[0, 0]) 
+# Confrontate i parametri di best fit con la vostra misura diretta! 
+print(l_hat, sigma_l) 
+# Grafico del modello di best-fit. 
+x = np.linspace(0.01, 0.5, 100) 
+plt.plot(x, period_model(x, l_hat))
+plt.errorbar(d, T, yerr=sigma_T, xerr=sigma_d, fmt='.') 
+plt.xlabel("d [m]") 
+plt.ylabel("Periodo [s]")
+plt.grid(which="both", ls="dashed", color="gray")
+r = T - period_model(d, l=1.05)
+sigma_r = sigma_T
+plt.savefig("massa_raggio.pdf") 
+plt.show()
+plt.plot(d, r, linestyle='', marker='.')
+plt.axhline(y = 0, color = 'gray', linestyle = '-') 
+plt.errorbar(d, r, sigma_r, sigma_d, fmt=".")
+plt.show()
+	\end{lstlisting}
+\end{figure}
 \end{document}
