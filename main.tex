@@ -6,6 +6,7 @@
 \usepackage[italian]{babel}
 \usepackage{graphicx}
 \usepackage{multirow}
+\usepackage{wrapfig}
 \title{\Huge{Pendolo fisico}}
 \author{\huge{Giosué Aiello, Domenico Fenili, Francesco Sermi}}
 \date{14 Novembre 2023}
@@ -220,8 +221,22 @@ Per fare le misurazioni
 \end{table}
 \section{Analisi dei dati}
 
-Per minimizzare le incertezze sul periodo di oscillazione (che \textbf{non} coincidono con la risoluzione del cronometro o al tempo di reazione di un individuo medio), abbiamo considerato i vari valori di $\tau$ misurati ad una certa distanza dal centro di massa e ne abbiamo calcolato il valor medio e la deviazione standard, che abbiamo poi diviso per il numero di oscillazioni fissato che abbiamo misurato. \\
-Successivamente, i valori medi che noi abbiamo misurato ad una certa distanza sono stati utilizzati per costruire il grafico del fit lineare con Python, così come i valori di deviazione standard che sono stati inseriti all'interno di un altro array per essere usati come gli errori sulle ordinate di ogni singolo valore medio. \\
+Per minimizzare le incertezze sul periodo di oscillazione (che \textbf{non} coincidono con la risoluzione del cronometro o al tempo di reazione di un individuo medio), abbiamo considerato i vari valori di $\tau$ misurati ad una certa distanza dal centro di massa e ne abbiamo calcolato il valor medio e la deviazione standard, che abbiamo poi diviso per il numero di oscillazioni fissato che abbiamo misurato. (inserire tabella) \\ 
+Successivamente, i valori medi e i valori della deviazione standard sono stati utilizzati per effettuare il fit lineare in Python utilizzando il parametro $l$ come parametro libero, che si può osservare qua sotto:
+\\
+\begin{wrapfloat}{figure}{i}{0pt}
+	\includegraphics[scale=0.5]{massa_raggio.pdf}
+	\caption{Grafico del fit ottenuto con \textit{Scipy}}
+\end{wrapfloat}
+La libreria \textit{Scipy} ci ha restituito che il miglior fit del nostro grafico risulta essere il valore $\hat{l} = 1.037 m \pm 0.002 m$ e possiamo notare che se calcoliamo l'errore associato:
+$$
+	\frac{l - \hat{l}}{\sigma_{\hat{l}}} = \frac{(\, 1.05 - 1.037 \, ) \, \text{m}}{0.002 \, \text{m}} = 6.5 \sigma_{\hat{l}}
+$$
+Si osserva che, confrontandolo tramite l'incertezza associata a $\hat{l}$, la lunghezza effettiva dell'asta si discosta significativamente dal valore del best-fit ottenuto con la funzione \texttt{curve\_fit} di Scipy. Inoltre, facendo il grafico dei residui $r_i$, dove:
+\begin{equation}
+	r_i = T_i - 2\pi\sqrt{\frac{\frac{\hat{l}}{12} + d_i^2}{gd_i}}
+\end{equation}
+\\
 \begin{figure}[hptb]
 	\begin{lstlisting}[language=Python]
 import numpy as np
