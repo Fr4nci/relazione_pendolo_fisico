@@ -225,25 +225,28 @@ Per minimizzare le incertezze sul periodo di oscillazione (che \textbf{non} coin
 Successivamente, i valori medi e i valori della deviazione standard sono stati utilizzati per effettuare il fit lineare in Python utilizzando il parametro $l$ come parametro libero, che si può osservare qua sotto:
 \\
 \begin{wrapfloat}{figure}{i}{0pt}
-	\includegraphics[scale=0.5]{massa_raggio.pdf}
-	\caption{Grafico del fit ottenuto con \textit{Scipy}}
+	\includegraphics[scale=0.6]{massa_raggio.pdf}
+	\caption{Grafico del fit ottenuto con \texttt{scipy}}
 \end{wrapfloat}
-La libreria \textit{Scipy} ci ha restituito che il miglior fit del nostro grafico risulta essere il valore $\hat{l} = 1.037 m \pm 0.002 m$ e possiamo notare che se calcoliamo l'errore associato:
+La libreria \texttt{scipy} ci ha restituito che il miglior fit del nostro grafico risulta essere il valore $\hat{l} = 1.037 \, m \pm 0.002 \, m$ e possiamo notare che se calcoliamo l'errore associato:
 $$
 	\frac{l - \hat{l}}{\sigma_{\hat{l}}} = \frac{(\, 1.05 - 1.037 \, ) \, \text{m}}{0.002 \, \text{m}} = 6.5 \sigma_{\hat{l}}
 $$
-Si osserva che, confrontandolo tramite l'incertezza associata a $\hat{l}$, la lunghezza effettiva dell'asta si discosta significativamente dal valore del best-fit ottenuto con la funzione \texttt{curve\_fit} di Scipy. Inoltre, facendo il grafico dei residui $r_i$, dove:
+Si osserva che, confrontandolo tramite l'incertezza associata a $\hat{l}$, la lunghezza effettiva dell'asta si discosta significativamente dal valore del best-fit ottenuto con la funzione \texttt{curve\_fit} di \texttt{scipy}. Inoltre, facendo il grafico dei residui $r_i$, dove:
 \begin{equation}
 	r_i = T_i - 2\pi\sqrt{\frac{\frac{\hat{l}}{12} + d_i^2}{gd_i}}
 \end{equation}
-dove $T_i$ è il valore medio dei $\tau$ calcolato dalla tabella $i-esima$ presenta nella sezione superiore e, consequenzialmente, $r_i$ è il suo residuo rispetto al modello teorico che noi cerchiamo di dimostrare: \\
-\begin{wrapfloat}{figure}{i}{0pt}
-	\includegraphics[scale=0.30]{grafico_residui.pdf}
-\end{wrapfloat} 
-nonostante 
-
+dove $T_i$ è il valore medio dei $\tau$ calcolato dalla tabella $i-esima$ presenta nella sezione superiore e, consequenzialmente, $r_i$ è il suo residuo rispetto al modello teorico che noi cerchiamo di dimostrare: 
 \newpage
-\begin{figure}[hptb]
+\begin{wrapfloat}{figure}{r}{0pt}
+	\includegraphics[scale=0.40]{grafico_residui.pdf}
+	\caption{Grafico dei residui}
+\end{wrapfloat} 
+\par\noindent\smallskip Osservando i grafici dei residui, si osserva che sono presenti molti punti che sono negativi: ciò vorrebbe dire che abbiamo misurato dei valori che sono inferiori al nostro modello teorico. Questo potrebbe essere spiegato dal fatto che è sempre presente un errore sistematico, dovuto al nostro apparato sperimentale, dovuto all'attrito dell'aria e del perno di oscillazione: durante le misurazioni noi, infatti, contavamo un'oscillazione quando il pendolo raggiungeva l'oscillazione massima, tuttavia i vari attriti agenti nel sistema hanno rallentato nel tempo la velocità del pendolo, diminuendone conseguentemente le ampiezze e portandoci quindi a misurare dei periodi di oscillazioni minori. I residui invece positivi, secondo la nostra ipotesi, sarebbero allora quelli in cui ha influito maggiormente l'errore dovuto ai nostri tempi di reazione, piuttosto che agli attriti, portandoci quindi a misurare dei periodi di oscillazione maggiori a quelli previsti dal nostro modello teorico.
+\newpage
+
+% L'idea migliore sarebbe quello di suddividere in pezzi il codice e di commentarne il funzionamento. Valutare con gli altri
+\begin{wrapfloat}{figure}{r}{12cm}
 	\begin{lstlisting}[language=Python]
 import numpy as np
 import math
@@ -276,17 +279,9 @@ for el in range(0, len(data)):
     sigma_T[el] = arr.deviazione_standard()
 T = T/10
 sigma_T = sigma_T/10
-# Dati---mettete le vostre misure! 
-# Qui potete anche leggere i dati da file, usando il metodo np.loadtxt(), 
-# se lo trovate comodo. 
 L = np.array([0.95, 0.85, 0.75, 0.65, 0.55, 0.45, 0.35, 0.25, 0.15, 0.05])
 d = abs(L - 0.525)
 sigma_d = np.full(d.shape, 0.002) 
-# T = np.array([15.9, 15.4, 15.7, 18.3, 38.1, 22.7, 16.7, 15.61, 15.7, 16.3])
-# T = T/10 
-# sigma_T = np.array([0.2, 0.1, 0.1, 0.2, 0.2, 0.1, 0.1, 0.06, 0.1, 0.1])
-# sigma_T = sigma_T/10 
-# Definizione dell'accelerazione di gravita'. 
 g = 9.81 
 def period_model(d, l): 
     """Modello per il periodo del pendolo. 
@@ -294,14 +289,11 @@ def period_model(d, l):
     return 2.0 * np.pi * np.sqrt((l**2.0 / 12.0 + d**2.0) / (g * d)) 
 plt.figure("Periodo")
 # Scatter plot dei dati. 
-plt.errorbar(d, T, sigma_T, sigma_d, fmt="o") 
-# Fit---notate che questo e' un fit ad un solo parametro. 
+plt.errorbar(d, T, sigma_T, sigma_d, fmt="o")  
 popt, pcov = curve_fit(period_model, d, T, sigma=sigma_T) 
 l_hat = popt[0] 
 sigma_l = np.sqrt(pcov[0, 0]) 
-# Confrontate i parametri di best fit con la vostra misura diretta! 
 print(l_hat, sigma_l) 
-# Grafico del modello di best-fit. 
 x = np.linspace(0.01, 0.5, 100) 
 plt.plot(x, period_model(x, l_hat))
 plt.errorbar(d, T, yerr=sigma_T, xerr=sigma_d, fmt='.') 
@@ -317,5 +309,5 @@ plt.axhline(y = 0, color = 'gray', linestyle = '-')
 plt.errorbar(d, r, sigma_r, sigma_d, fmt=".")
 plt.show()
 	\end{lstlisting}
-\end{figure}
+\end{wrapfloat}
 \end{document}
