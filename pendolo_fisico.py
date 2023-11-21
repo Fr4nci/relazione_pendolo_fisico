@@ -29,6 +29,8 @@ for el in range(0, len(data)):
     sigma_T[el] = arr.deviazione_standard()
 T = T/10
 sigma_T = sigma_T/10
+print(T)
+print(sigma_T)
 # Dati---mettete le vostre misure! 
 # Qui potete anche leggere i dati da file, usando il metodo np.loadtxt(), 
 # se lo trovate comodo. 
