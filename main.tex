@@ -11,15 +11,34 @@
 \usepackage{setspace}
 \usepackage{ragged2e}
 \title{\Huge{Pendolo fisico}}
-\author{\huge{Giosué Aiello, Domenico Fenili, Francesco Sermi}}
-\date{14 Novembre 2023}
+\author{\large{Giosué Aiello, Domenico Fenili, Francesco Sermi}}
+\date{Novembre 2023}
 \usepackage{xcolor}
-
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-
+\usepackage{subcaption}
+% Label format
+\DeclareCaptionLabelFormat{custom}
+{%
+      \textsc{#1 \textbf{(#2)}}
+}
+% Separator style
+\DeclareCaptionLabelSeparator{custom}{--}
+% Caption format    
+\DeclareCaptionFormat{custom}
+{%
+    #1#2 \small #3
+}
+\captionsetup{
+	format=custom,
+	labelformat=custom,
+	labelsep=custom
+}
 \lstdefinestyle{code}{
     backgroundcolor=\color{backcolour},   
     commentstyle=\color{codegreen},
@@ -40,8 +59,9 @@
 }
 \lstset{style=code}
 \begin{document}
-
-\maketitle
+	\begin{titlingpage}
+		\maketitle
+	\end{titlingpage}
 \pagebreak
 \tableofcontents
 \pagebreak
@@ -81,13 +101,13 @@ Combinando la $(1)$ e la $(2)$:
 \begin{equation}
 	I\frac{d^2 \theta}{dt^2} = -mgd\theta \implies \frac{d^2 \theta}{dt^2} + \frac{mgd}{I}\theta = 0 
 \end{equation}
-Siamo dinanzi ad un'equazione differenziale di secondo ordine a coefficienti costanti omogenea di un moto armonico con pulsazione e periodo di oscillazione dati da:
+Siamo dinanzi ad un'equazione differenziale di secondo ordine a coefficienti costanti omogenea di un moto armonico con pulsazione $\omega_0$ e periodo di oscillazione $T_0$ dati da:
 $$\omega_0 = \sqrt{\frac{mgd}{I}} \, \, \, \, \, \, T_0 = 2\pi\sqrt{\frac{I}{mgd}}$$
 Utilizzando il teorema degli assi paralleli, possiamo concludere che il momento di inerzia dell'oggetto fisico risulta essere:
 $$
 	I = I_{cm} + md^2 = \frac{ml^2}{12} + md^2
 $$
-Possiamo quindi riscrivere la formula nella seguente maniera:
+Possiamo quindi riscrivere la formula del periodo di oscillazione nella seguente maniera:
 \begin{equation}
 	T(d) = \sqrt{\frac{m(l^2 + d^2)}{mgd}} = \sqrt{\frac{\frac{l^2}{12} + d^2}{gd}}
 \end{equation}
@@ -109,8 +129,8 @@ Possiamo quindi riscrivere la formula nella seguente maniera:
 
 \section{Descrizione delle misure}
 
-In primis, abbiamo misurato la lunghezza dell'asta $l = (105,0 \pm 0.1) cm$ con il metro a nastro. Successivamente abbiamo misurato la distanza dal centro di massa della nostra asta dei vari buchi in cui avremmo inserito il perno di rotazione con il metro a nastro, visto che le incertezze derivanti dalla misurazione col metro erano, in relazione alle grandezze da noi misurate, molto piccole e non è stato necessario misurarle col calibro. \\
-Successivamente abbiamo iniziato a misurare i periodi di oscillazione $\tau$ misurando quanto occorreva al pendolo a compiere $10$ oscillazioni, per poter ridurre l'errore sul periodo di oscillazione effettivo (perché l'incertezza sulla misura delle oscillazioni \textbf{non} è il tempo di reazione di un essere umano). Queste misurazioni sono state effettuato con il cronometro, sono state ripetute 7 volte per ogni foro. \\
+In primis, abbiamo misurato la lunghezza dell'asta $l = (105,0 \pm 0.1) \,  \text{cm}$ con il metro a nastro. Successivamente abbiamo misurato la distanza dal centro di massa della nostra asta dei vari buchi in cui avremmo inserito il perno di rotazione con il metro a nastro, visto che le incertezze derivanti dalla misurazione col metro erano, in relazione alle grandezze da noi misurate, molto piccole e non è stato necessario misurarle col calibro. \\
+Successivamente abbiamo iniziato a misurare i periodi di oscillazione $\tau$ misurando quanto occorreva al pendolo a compiere $10$ oscillazioni, per poter ridurre l'errore sul periodo di oscillazione effettivo (perché l'incertezza sulla misura delle oscillazioni \textbf{non} è il tempo di reazione di un essere umano). Queste misurazioni sono state effettuato con il cronometro e sono state ripetute 7 volte per ogni foro. \\
 L'unica accortezza che abbiamo deciso di seguire per ogni misura è stato quello di far partire il pendolo da un angolo per cui era ragionevole supporre valida l'approssimazione dei piccoli angoli mostrata nei "Cenni teorici", cercando di mantenere invariato l'angolo fra la verticale e il punto iniziale in cui si trovava l'asta.
 
 \begin{table}[h!]
@@ -230,7 +250,7 @@ Per minimizzare le incertezze sul periodo di oscillazione (che \textbf{non} coin
 \hspace{0.125\textwidth}
 \begin{minipage}{0.365\textwidth}
 		\begin{tabular}{| c | c |} \hline
-			 Valore medio & Deviazione standard \\
+			 \textbf{Valore medio} & \textbf{Deviazione standard} \\
 			 \hline
 			 1.59 & 0.09 \\ \hline
 			 1.54 & 0.08 \\ \hline
@@ -243,7 +263,7 @@ Per minimizzare le incertezze sul periodo di oscillazione (che \textbf{non} coin
 			 1.57 & 0.06 \\ \hline
 			 1.63 & 0.05 \\ \hline
 		\end{tabular}
-		\captionof{table}{Tabella dei valori medi}
+		\captionof{table}{Tabella dei valori medi con relativa deviazione standard}
 \end{minipage} \\ \\ \\
 Successivamente, questi sono stati utilizzati per effettuare il fit lineare in Python utilizzando il parametro $l$ come parametro libero, di cui abbiamo fatto il grafico utilizzando il valore di \emph{best-fit} $\hat{l}$ che abbiamo\\
 
@@ -312,13 +332,13 @@ class Number:
 \begin{minipage}{0.5\textwidth}
 All'inizio del file si includono tutte le librerie necessarie per l'interpolazione dei dati (\texttt{numpy} e \texttt{math}), per la creazione dei file (la classe \texttt{pyplot} dalla libreria \texttt{matplotlib}) e per effettuare l'analisi tramite fit lineare (la funzione \texttt{curve\_fit} della libreria \texttt{scipy}). Successivamente, abbiamo aperto i dati da noi misurati tramite la funzione \texttt{open} di \emph{Python} e abbiamo definito una classe chiamata \texttt{Number} con i metodi \texttt{media} e \texttt{deviazione\_standard} che effettuava tutti i calcoli necessari per calcolare il valore medio e la deviazione standard dell'array passato al costruttore in cui erano presenti tutte le misurazioni di $\tau$ ad una certa distanza dal centro di massa.
 \end{minipage}
-\\
-\begin{minipage}{0.45\textwidth}
+\begin{minipage}{0.5\textwidth}
+	\vspace{-1.5cm}
 	Il blocco di codice qua accanto va a definire il vettore \texttt{T} e il vettore \texttt{sigma\_T} (che contiene le incertezze sugli elementi di $T$) e iteriamo all'interno del file \texttt{data.txt} (che contiene sulle righe $n$ misurazioni dell'oscillazione del pendolo ad una certa distanza $d$) per andare a "riempire" i due vettori: ogni riga del file viene presa e passata alla classe \texttt{Number} su cui vengono eseguite l'operazione di calcolo del valor medio e, successivamente, la misura della deviazione standard della media. \\ \\
 	Successivamente definiamo il vettore $L$ che contiene la distanza dei vari fori da un'estremità dell'asta che abbiamo usato nella riga successiva per definire il vettore $d$ che effettivamente contiene la distanza del perno di rotazione dal centro di massa del sistema (e abbiamo avuto l'accortezza di porre le incertezze, come si può vedere nella riga successiva, $0.002 \, \text{m}$ ad ogni cella del vettore \texttt{sigma\_d}, che contiene le incertezze legate ad ogni elemento del vettore \texttt{d}, il doppio dell'incertezza perché, ogni elemento di L, è stato sottratto a $0.525 \, \text{m}$ a cui era assegnata l'incertezza di $0.001 \, \text{m}$). \\ \\ Tutti questi vettori vengono presi e passati alla funzione \texttt{curve\_fit()} di \texttt{scipy} che si occupa di fare il fit lineare della funzione e le istruzioni successive usano le varie funzioni della libreria \texttt{matplotlib} per disegnare i grafici "Distanza-Periodo" e il grafico dei residui (con i relativi errori sulle ascisse e sulle ordinate).
 \end{minipage}
-\hspace{0.1\textwidth}
-\begin{minipage}{0.50\textwidth}
+\hspace{0.06\textwidth}
+\begin{minipage}{0.5\textwidth}
 	\begin{lstlisting}[language=Python, firstnumber=24]
 T = np.ones(len(data))
 sigma_T = np.ones(len(data))
@@ -359,4 +379,7 @@ plt.errorbar(d, r, sigma_r, sigma_d, fmt=".")
 plt.show()
 	\end{lstlisting}
 \end{minipage}
+\newpage
+\section{Conclusioni}
+
 \end{document}
