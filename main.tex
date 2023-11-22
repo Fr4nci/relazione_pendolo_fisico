@@ -197,7 +197,7 @@ L'unica accortezza che abbiamo deciso di seguire per ogni misura è stato quello
     				\multirow{2}{5em}{Numero prova} & $\tau$ (s) & $d$ (cm) \\
     				& $\pm 0.01$ & $\pm 0.1$ \\
     				\hline
-    				1 & 15.75 & \multirow{7}{*}{75.0} \\ \cline{1-2}
+    				1 & 15.75 & \multirow{7}{*}{65.0} \\ \cline{1-2}
     				2 & 15.66 & \\ \cline{1-2}
     				3 & 15.73 & \\ \cline{1-2}
     				4 & 15.61 & \\ \cline{1-2}
@@ -214,7 +214,7 @@ L'unica accortezza che abbiamo deciso di seguire per ogni misura è stato quello
     				\multirow{2}{5em}{Numero prova} & $\tau$ (s) & $d$ (cm) \\
     				& $\pm 0.01$ & $\pm 0.1$ \\
     				\hline
-    				1 & 15.75 & \multirow{7}{*}{75.0} \\ \cline{1-2}
+    				1 & 15.75 & \multirow{7}{*}{55.0} \\ \cline{1-2}
     				2 & 15.66 & \\ \cline{1-2}
     				3 & 15.73 & \\ \cline{1-2}
     				4 & 15.61 & \\ \cline{1-2}
@@ -231,7 +231,7 @@ L'unica accortezza che abbiamo deciso di seguire per ogni misura è stato quello
     				\multirow{2}{5em}{Numero prova} & $\tau$ (s) & $d$ (cm) \\
     				& $\pm 0.01$ & $\pm 0.1$ \\
     				\hline
-    				1 & 15.75 & \multirow{7}{*}{75.0} \\ \cline{1-2}
+    				1 & 15.75 & \multirow{7}{*}{45.0} \\ \cline{1-2}
     				2 & 15.66 & \\ \cline{1-2}
     				3 & 15.73 & \\ \cline{1-2}
     				4 & 15.61 & \\ \cline{1-2}
@@ -241,6 +241,7 @@ L'unica accortezza che abbiamo deciso di seguire per ogni misura è stato quello
     				\hline
 			\end{tabular}
 	\end{minipage}
+	
 \end{table}
 \section{Analisi dei dati}
 
@@ -292,7 +293,7 @@ dove $T_i$ è il valore medio dei $\tau$ calcolato dalla tabella $i-esima$ prese
 		\vspace{-0.5cm}
 		\centering			
 			\includegraphics[scale=0.45]{grafico_residui.pdf}
-			\caption{Grafico dei residui}
+			\caption{Grafico dei residui}\label{fig:grafico_residui}
 	\end{minipage}
 \end{figure}
 \\
@@ -381,5 +382,12 @@ plt.show()
 \end{minipage}
 \newpage
 \section{Conclusioni}
+Si è studiato il moto del pendolo fisico cercando di verificare se il modello teorico da noi scelto, che ricordiamo è della forma:
+$$
+	T(d) = 2\pi\sqrt{\frac{\frac{l^2}{12} + d^2}{gd}}
+$$
+fosse corroborato dalle evidenze sperimentali. \\
+Analizzando i dati tramite fit lineare con la libreria scipy, siamo giunti a concludere il valore del best-fit dista solo di $1.3 \, \sigma$ con una variazione percentuale dal valore atteso del $\Delta_\% = \frac{l - \hat{l}}{l} * 100 \approx 1.2 \, \%$, che si può ipotizzare sia stata causata dagli attriti dovuti all'aria e alla rotazione attorno al perno (che non sono contemplati dal nostro modello teorico). Oltre a ciò, si osserva dal grafico dei residui (\ref{fig:grafico_residui}) che questi sono "buoni", ovvero oscillano intorno allo zero, indicando che il modello teorico approssima comunque, con un certo grado di precisione, il moto del pendolo fisico, in aggiunta a questo il grafico ci assicura che non sono presenti degli errori sistematici all'interno del nostro apparato sperimentale (oppure hanno influito minimamente), in quanto i residui, con il loro relativo errore, fluttuano intorno alla zero anche alternandosi di segno, facendoci capire che non ci sono dei fattori dovuti al nostro apparato sperimentale che ci fanno sovrastimare o sottostimare i periodi di oscillazione. \\
+Pertanto è lecito, almeno in buona approssimazione, che il modello teorico da noi scelto è adatto per descrivere il moto del pendolo con una buona approssimazione. \\
 
 \end{document}
