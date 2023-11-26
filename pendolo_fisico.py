@@ -65,7 +65,7 @@ plt.ylabel("Periodo [s]")
 plt.grid(which="both", ls="dashed", color="gray")
 r = T - period_model(d, l_hat)
 sigma_r = sigma_T
-plt.savefig("massa_raggio.pdf") 
+plt.savefig("grafico_fit.pdf") 
 plt.show()
 plt.plot(d, r, linestyle='', marker='.')
 plt.grid(which="both", ls="dashed", color="gray")

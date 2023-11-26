@@ -6,10 +6,14 @@
 \usepackage[italian]{babel}
 \usepackage{graphicx}
 \usepackage{multirow}
+\usepackage{subfloat}
 \usepackage{wrapfig}
+\usepackage{float}
 \usepackage{caption}
 \usepackage{setspace}
 \usepackage{ragged2e}
+\usepackage{longtable}
+\usepackage[T1]{fontenc}
 \title{\Huge{Pendolo fisico}}
 \author{\large{Giosué Aiello, Domenico Fenili, Francesco Sermi}}
 \date{Novembre 2023}
@@ -129,12 +133,11 @@ Possiamo quindi riscrivere la formula del periodo di oscillazione nella seguente
 
 \section{Descrizione delle misure}
 
-In primis, abbiamo misurato la lunghezza dell'asta $l = (105,0 \pm 0.1) \,  \text{cm}$ con il metro a nastro. Successivamente abbiamo misurato tutte le distanza $L$ dei vari buchi rispetto ad una delle due estremità della sbarra che abbiamo scelto e "tenuto" per tutte le altre misurazioni di $L$ e, sempre rispetto alla stessa estremità che avevamo scelto per misurare, abbiamo misurato la distanza del centro di massa della sbarra. Queste misurazioni sono state effettuate con il metro a nastro, visto che le incertezze derivanti dalla misurazione col metro erano, in relazione alle grandezze da noi misurate, molto piccole e non è stato necessario misurarle col calibro.\\
-Successivamente abbiamo iniziato a misurare i periodi di oscillazione $\tau$ misurando quanto occorreva al pendolo a compiere $10$ oscillazioni, per poter ridurre l'errore sul periodo di oscillazione effettivo, di fatto "spalmando" l'incertezza su ben 10 oscillazioni: questo si è fatto perché l'incertezza sulla misura delle oscillazioni \textbf{non} è il tempo di reazione di un essere umano. Queste misurazioni sono state effettuato con il cronometro e sono state ripetute 7 volte per ogni foro. \\
+In primis, abbiamo misurato la lunghezza dell'asta $l = (105.0 \pm 0.1) \,  \text{cm}$ con il metro a nastro. Successivamente abbiamo misurato tutte le distanze $L$ dei vari buchi rispetto ad una delle due estremità della sbarra che abbiamo scelto e "tenuto" per tutte le altre misurazioni di $L$ e, sempre rispetto alla stessa estremità che avevamo scelto per misurare, abbiamo misurato la distanza del centro di massa della sbarra (che risulta essere $d_c = (52.5 \pm 0.1) \, \text{cm}$. Queste misurazioni sono state effettuate con il metro a nastro, visto che le incertezze derivanti dalla misurazione col metro erano, in relazione alle grandezze da noi misurate, già molto piccole e quindi non è stato necessario misurarle col calibro per avere delle misure ancora più precise.\\
+Successivamente abbiamo iniziato a misurare i periodi di oscillazione $\tau$ misurando quanto occorreva al pendolo a compiere $10$ oscillazioni, per poter ridurre l'errore sul periodo di oscillazione effettivo, di fatto "spalmando" l'incertezza su ben 10 oscillazioni: questo è stato fatto perché l'incertezza sulla misura delle oscillazioni \textbf{non corrisponde} al tempo di reazione di un essere umano. Queste misurazioni sono state effettuate con il cronometro e sono state ripetute 7 volte per ogni foro. \\
 L'unica accortezza che abbiamo deciso di seguire per ogni misura è stato quello di far partire il pendolo da un angolo per cui era ragionevole supporre valida l'approssimazione dei piccoli angoli mostrata nei "Cenni teorici", cercando di mantenere invariato l'angolo fra la verticale e il punto iniziale in cui si trovava l'asta.
-
-\begin{table}[h!]
-	\hspace{-0.05\textwidth}
+\begin{longtable}{c  c  c}
+	\hspace{-0.225\textwidth}
 	\begin{minipage}{0.1\textwidth}
 		\centering
 		\begin{tabular}{ | r | c | c | }
@@ -152,7 +155,7 @@ L'unica accortezza che abbiamo deciso di seguire per ogni misura è stato quello
 			\hline
 		\end{tabular}
 	\end{minipage}
-	\hspace{0.3\textwidth}
+	\hspace{0.25\textwidth}
 	\begin{minipage}{0.1\textwidth}
 		\centering
 		\begin{tabular}{ | r | c | c | }
@@ -170,7 +173,7 @@ L'unica accortezza che abbiamo deciso di seguire per ogni misura è stato quello
     			\hline
 		\end{tabular}
 	\end{minipage}
-	\hspace{0.3\textwidth}
+	\hspace{0.25\textwidth}
 	\begin{minipage}{0.1\textwidth}
 		\centering
 		\begin{tabular}{ | r | c | c | }
@@ -187,12 +190,11 @@ L'unica accortezza che abbiamo deciso di seguire per ogni misura è stato quello
     			7 & 15.67 & \\ \cline{1-2}
     			\hline
 		\end{tabular}
-		\hspace{0.05\textwidth}
-	\end{minipage}
-\end{table}
-\begin{table}[h!]
-	\hspace{-0.05\textwidth}
+	\end{minipage} \\ \\
+	\endfirsthead
+	\hspace{-0.225\textwidth}	
 	\begin{minipage}{0.1\textwidth}
+			\centering
 			\begin{tabular}{ | r | c | c | }
     				\hline
     				\multirow{2}{5em}{Numero prova} & $\tau$ (s) & $L$ (cm) \\
@@ -208,8 +210,9 @@ L'unica accortezza che abbiamo deciso di seguire per ogni misura è stato quello
     				\hline
 			\end{tabular}
 	\end{minipage}
-	\hspace{0.3\textwidth}
+	\hspace{0.25\textwidth}
 	\begin{minipage}{0.1\textwidth}
+			\centering
 			\begin{tabular}{ | r | c | c | }
     				\hline
     				\multirow{2}{5em}{Numero prova} & $\tau$ (s) & $L$ (cm) \\
@@ -225,8 +228,9 @@ L'unica accortezza che abbiamo deciso di seguire per ogni misura è stato quello
     				\hline
 			\end{tabular}
 	\end{minipage}
-	\hspace{0.3\textwidth}
+	\hspace{0.25\textwidth}
 	\begin{minipage}{0.1\textwidth}
+		\centering
 			\begin{tabular}{ | r | c | c | }
     				\hline
     				\multirow{2}{5em}{Numero prova} & $\tau$ (s) & $L$ (cm) \\
@@ -241,9 +245,10 @@ L'unica accortezza che abbiamo deciso di seguire per ogni misura è stato quello
     				7 & 22.78 & \\ \cline{1-2}
     				\hline
 			\end{tabular}
-	\end{minipage} \\ \\ \\
+	\end{minipage} \\ 
+	\hspace{-0.225\textwidth}
 	\begin{minipage}{0.1\textwidth}
-		\hspace{-0.05\textwidth}
+		\centering
 		\begin{tabular}{ | r | c | c | }
 			\hline
 			\multirow{2}{5em}{Numero prova} & $\tau$ (s) & $L$ (cm) \\
@@ -257,18 +262,68 @@ L'unica accortezza che abbiamo deciso di seguire per ogni misura è stato quello
 			6 & 16.68 & \\ \cline{1-2}
 			7 & 16.52 & \\ \hline
 		\end{tabular}
-		
 	\end{minipage}
-\end{table}
+	\hspace{0.25\textwidth}
+	\begin{minipage}{0.1\textwidth}
+		\centering
+		\begin{tabular}{ | r | c | c | }
+			\hline
+			\multirow{2}{5em}{Numero prova} & $\tau$ (s) & $L$ (cm) \\
+			& $\pm 0.01$ & $\pm 0.1$ \\
+			\hline
+			1 & 15.57 & \multirow{7}{*}{25.0} \\ \cline{1-2}
+			2 & 15.69 & \\ \cline{1-2}
+			3 & 15.67 & \\ \cline{1-2}
+			4 & 15.60 & \\ \cline{1-2}
+			5 & 15.59 & \\ \cline{1-2}
+			6 & 15.57 & \\ \cline{1-2}
+			7 & 15.59 & \\ \hline
+		\end{tabular}
+	\end{minipage}
+	\hspace{0.25\textwidth}
+	\begin{minipage}{0.1\textwidth}
+		\centering
+		\begin{tabular}{ | r | c | c | }
+			\hline
+			\multirow{2}{5em}{Numero prova} & $\tau$ (s) & $L$ (cm) \\
+			& $\pm 0.01$ & $\pm 0.1$ \\
+			\hline
+			1 & 15.69 & \multirow{7}{*}{15.0} \\ \cline{1-2}
+			2 & 15.69 & \\ \cline{1-2}
+			3 & 15.66 & \\ \cline{1-2}
+			4 & 15.73 & \\ \cline{1-2}
+			5 & 15.95 & \\ \cline{1-2}
+			6 & 15.76 & \\ \cline{1-2}
+			7 & 15.69 & \\ \hline
+		\end{tabular}
+	\end{minipage} \\ \\ \\
+	\begin{minipage}{\textwidth}
+		\centering
+			\begin{tabular}{ | r | c | c | }
+				\hline
+				\multirow{2}{10em}{Numero prova} & $\tau$ (s) & $L$ (cm) \\
+				& $\pm 0.01$ & $\pm 0.1$ \\ 
+				\hline
+				1 & 16.26 & \multirow{7}{*}{5.0} \\ \cline{1-2}
+				2 & 16.37 & \\ \cline{1-2}
+				3 & 16.22 & \\ \cline{1-2}
+				4 & 16.29 & \\ \cline{1-2}
+				5 & 16.31 & \\ \cline{1-2}
+				6 & 16.35 & \\ \cline{1-2}
+				7 & 16.45 & \\ \cline{1-3}
+			\end{tabular}
+	\end{minipage} \tabularnewline
+	\caption{Tabelle con le misure da noi effettuate} \tabularnewline
+\end{longtable}
 \section{Analisi dei dati}
 
-\begin{minipage}{0.5\textwidth} \vspace{1cm}
-Per minimizzare le incertezze sul periodo di oscillazione (che \textbf{non} coincidono con la risoluzione del cronometro o al tempo di reazione di un individuo medio), abbiamo considerato i vari valori di $\tau$ misurati ad una certa distanza dal centro di massa e ne abbiamo calcolato il valor medio e la deviazione standard e li abbiamo divisi per il numero di oscillazioni che il pendolo effettuava durante la misurazione, distribuendo l'errore della singola oscillazione su tutte quelle compiute. I valori ottenuti da queste interpolazioni sono riportati nella tabella qua accanto. \\ \\
+\begin{minipage}{0.45\textwidth} \vspace{1cm}
+Per minimizzare le incertezze sul periodo di oscillazione (che \textbf{non} coincidono con la risoluzione del cronometro o al tempo di reazione di un individuo medio), abbiamo considerato i vari valori di $\tau$ misurati ad una certa distanza dal centro di massa, ne abbiamo calcolato il valor medio e la deviazione standard e li abbiamo entrambi divisi per il numero di oscillazioni che il pendolo effettuava durante la misurazione, distribuendo l'errore della singola oscillazione su tutte quelle compiute. I valori ottenuti da queste interpolazioni sono riportati nella tabella accanto. \\ \\
 \end{minipage}
-\hspace{0.125\textwidth}
-\begin{minipage}{0.365\textwidth}
+\hspace{0.05\textwidth}
+\begin{minipage}{0.45\textwidth}		
 		\begin{tabular}{| c | c |} \hline
-			 \textbf{Valore medio} & \textbf{Deviazione standard} \\
+			 \textbf{Valore medio (s)} & \textbf{Deviazione standard (s)} \\
 			 \hline
 			 1.59 & 0.09 \\ \hline
 			 1.54 & 0.08 \\ \hline
@@ -281,19 +336,20 @@ Per minimizzare le incertezze sul periodo di oscillazione (che \textbf{non} coin
 			 1.57 & 0.06 \\ \hline
 			 1.63 & 0.05 \\ \hline
 		\end{tabular}
+		\label{table:tab_average_standard_deviation}
 		\captionof{table}{Tabella dei valori medi con relativa deviazione standard}
 \end{minipage} \\ \\ \\
-L'errore invece presente sulla distanza $d$ del perno di oscillazione è stata calcolata invece utilizzando la distanza del perno di rotazione rispetto ad una delle estremità e sottraendola alla distanza del perno di rotazione rispetto alla stessa estremità. In formula:
+Le misure effettuate sulla distanza $L$ fra il perno di rotazione e l'estremità della sbarra da noi scelta sono state convertite in metri e per determinare la distanza $d$ del perno di oscillazione abbiamo calcolato il valore assoluto della sottrazione fra la distanza del perno di rotazione rispetto ad una delle estremità  e la distanza del perno di rotazione rispetto alla stessa estremità. In formula:
 $$
 	d = | L - d_c |
 $$
-pertanto l'errore presente nella differenza va considerato come somma in quadratura delle incertezze legate alle due misure:
+Pertanto l'errore presente nella differenza va considerato come somma in quadratura delle incertezze legate alle due misure:
 $$
-	\sigma_d = \sqrt{\sigma_L^2 + \sigma_{d_c}^2} \approx 0.001 m
+	\sigma_d = \sqrt{\sigma_L^2 + \sigma_{d_c}^2} \approx 0.001 \, \text{m}
 $$
-Fatte queste premesse sulle grandezze che abbiamo misurato e sulle loro relative incertezze, per verificare la validità del nostro modello teorico abbiamo utilizzato la tecnica del fit lineare usando $l$ come parametro libero (di cui è possibile vedere il grafico qua sotto) tramite la libreria \texttt{scipy} di Python. \\
+Fatte queste premesse sulle grandezze che abbiamo misurato e sulle loro relative incertezze, per verificare la validità del nostro modello teorico abbiamo utilizzato la tecnica del fit lineare usando $l$ come parametro libero (di cui è possibile vedere il grafico sotto riportato) tramite la libreria \texttt{scipy} di Python. \\
 \begin{minipage}{0.4\textwidth}
-	\includegraphics[scale=0.6]{massa_raggio.pdf}
+	\includegraphics[scale=0.6]{grafico_fit.pdf}
 \end{minipage}
 \hspace{0.2\textwidth}
 \begin{minipage}{0.4\textwidth}
@@ -303,16 +359,16 @@ $$
 	\frac{l - \hat{l}}{\sqrt{\sigma^2_{\hat{l}} + \sigma^2_{l}}} = \\ \frac{(\, 1.05 - 1.037 \, ) \, \text{m}}{\sqrt{(0.002^2 + 0.001^2) \, \text{m}^2}} \approx \\ 5.8
 $$
 Pertanto possiamo affermare che il valore del \emph{best-fit} $\hat{l}$ ha una buona precisione (in quanto l'errore $\sigma_{\hat{l}}$ induce un errore relativo sulla misura pari a $\sigma_{\%_{\hat{l}}} = \frac{\sigma_{\hat{l}}}{\hat{l}} * 100 \approx 0.2 \, \% $), tuttavia ha una bassa accuratezza, visto che, rispetto al valore da noi $l=1.05 \, \text{m}$ atteso, dista ben $5.8\sigma_{l-\hat{l}}$. \\
-Considerando i residui $r_{i}$, dove:
+Abbiamo anche considerato i residui $r_{i}$:
 \begin{equation}
 	r_i = T_i - 2\pi\sqrt{\frac{\frac{\hat{l}}{12} + d_i^2}{gd_i}}
 \end{equation}
 \end{minipage}
-dove $T_i$ è il valore medio dei $\tau$ calcolato dalla tabella $i-esima$ presenta nella sezione superiore e, consequenzialmente, $r_i$ è il suo residuo rispetto al modello teorico che noi cerchiamo di dimostrare, ne abbiamo disegnato il grafico:  \\
+dove $T_i$ è l'i-esimo valore medio da noi calcolato con i $\tau$ da noi misurati e corrisponde al valore medio riportato all'i-esimo riga della tabella \ref{table:tab_average_standard_deviation} e, conseguentemente, $r_i$ rappresenta il relativo residuo rispetto al modello teorico di cui noi cerchiamo di verificare la validità. 
 \begin{figure}[h!tbp]
 	\begin{minipage}{0.6\textwidth}
-	\noindent Si osserva che i residui rispetto al modello oscillano tutti rispetto allo zero, pertanto possiamo considerarli come "buoni" perché il fatto che fluttuino in questa maniera ci assicura che non erano presenti degli errori sistematici dovuti al nostro apparato sperimentale oppure che questi abbiano influito superficialmente nelle nostre misure. \\ \\
-	Per quanto riguarda l'elaborazione di questi dati, abbiamo utilizzato il codice scritto in Python presente nella prossima pagina, che tramite una serie di librerie (fra i quali si annovera \textit{Scipy}, \textit{Matplotlib} e \textit{Numpy}) attraverso cui è stato possibile svolgere le operazioni di fit lineare con parametro libero, il calcolo della deviazione standard e del valore medio.\\	
+	\noindent Tracciandone il grafico con le relative incertezze, riportato di fianco, si osserva che i residui fluttuano attorno allo zero nelle barre di errore, mostrandoci che non erano presenti degli errori sistematici dovuti al nostro apparato sperimentale oppure che questi hanno influito superficialmente nelle nostre misure. \\ \\
+	Per quanto riguarda l'elaborazione di questi dati, abbiamo utilizzato il codice scritto in Python presente nella prossima pagina, che tramite una serie di librerie (fra i quali si annovera \textit{Scipy}, \textit{Matplotlib} e \textit{Numpy}) è stato possibile svolgere le operazioni di fit lineare con parametro libero, il calcolo della deviazione standard e del valore medio.\\	
 	Si cerca di dare una breve spiegazione di questo codice:
 	\end{minipage}
 	\hspace{-0.04\textwidth}
@@ -322,8 +378,7 @@ dove $T_i$ è il valore medio dei $\tau$ calcolato dalla tabella $i-esima$ prese
 			\includegraphics[scale=0.45]{grafico_residui.pdf}
 			\caption{Grafico dei residui}\label{fig:grafico_residui}
 	\end{minipage}
-\end{figure} \\
-% L'idea migliore sarebbe quello di suddividere in pezzi il codice e di commentarne il funzionamento. Valutare con gli altri
+\end{figure} \\ 
 \begin{minipage}{0.5\textwidth}
 	\begin{lstlisting}[language=Python]
 import numpy as np
@@ -351,9 +406,10 @@ class Number:
         return(self.deviazione)
 \end{lstlisting}
 \end{minipage}
-\hspace{0.025\textwidth}
-\begin{minipage}{0.5\textwidth}
-All'inizio del file si includono tutte le librerie necessarie per l'interpolazione dei dati (\texttt{numpy} e \texttt{math}), per la creazione dei file (la classe \texttt{pyplot} dalla libreria \texttt{matplotlib}) e per effettuare l'analisi tramite fit lineare (la funzione \texttt{curve\_fit} della libreria \texttt{scipy}). Successivamente, abbiamo aperto i dati da noi misurati tramite la funzione \texttt{open} di \emph{Python} e abbiamo definito una classe chiamata \texttt{Number} con i metodi \texttt{media} e \texttt{deviazione\_standard} che effettuava tutti i calcoli necessari per calcolare il valore medio e la deviazione standard dell'array passato al costruttore in cui erano presenti tutte le misurazioni di $\tau$ ad una certa distanza dal centro di massa.
+\hspace{0.1\textwidth}
+\begin{minipage}{0.4\textwidth}
+\vspace{-1cm}
+All'inizio del file si includono tutte le librerie necessarie per l'interpolazione dei dati (\texttt{numpy} e \texttt{math}), per la creazione dei grafici (la classe \texttt{pyplot} dalla libreria \texttt{matplotlib}) e per effettuare l'analisi tramite fit lineare (la funzione \texttt{curve\_fit} della libreria \texttt{scipy}). Successivamente, abbiamo aperto i dati da noi misurati tramite la funzione \texttt{open} di \emph{Python} e abbiamo definito una classe chiamata \texttt{Number} con i metodi \texttt{media} e \texttt{deviazione\_standard} che effettuava tutti i calcoli necessari per determinare il valore medio e la deviazione standard dell'array passato al costruttore in cui erano presenti tutte le misurazioni di $\tau$ ad una certa distanza dal centro di massa.
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 	\vspace{-1.5cm}
@@ -409,7 +465,7 @@ $$
 	T(d) = 2\pi\sqrt{\frac{\frac{l^2}{12} + d^2}{gd}}
 $$
 fosse corroborato dalle evidenze sperimentali. \\
-Analizzando i dati tramite fit lineare con la libreria scipy, siamo giunti a concludere il valore del best-fit dista solo di $1.3 \, \sigma$ con una variazione percentuale dal valore atteso del $\Delta_\% = \frac{l - \hat{l}}{l} * 100 \approx 1.2 \, \%$, che si può ipotizzare sia stata causata dagli attriti dovuti all'aria e alla rotazione attorno al perno (che non sono contemplati dal nostro modello teorico). Oltre a ciò, si osserva dal grafico dei residui (\ref{fig:grafico_residui}) che questi sono "buoni", ovvero oscillano intorno allo zero, indicando che il modello teorico approssima comunque, con un certo grado di precisione, il moto del pendolo fisico, in aggiunta a questo il grafico ci assicura che non sono presenti degli errori sistematici all'interno del nostro apparato sperimentale (oppure hanno influito minimamente), in quanto i residui, con il loro relativo errore, fluttuano intorno alla zero anche alternandosi di segno, facendoci capire che non ci sono dei fattori dovuti al nostro apparato sperimentale che ci fanno sovrastimare o sottostimare i periodi di oscillazione. \\
-Pertanto è lecito, almeno in buona approssimazione, che il modello teorico da noi scelto è adatto per descrivere il moto del pendolo con una buona approssimazione. \\
+Analizzando i dati tramite fit lineare con la libreria scipy, siamo giunti a concludere che il valore del best-fit $\hat{l}$ risulta essere $\hat{l} = (1.037 \pm 0.002) \, \text{m}$ e  dista $5.8 \, \sigma_{l - \hat{l}}$ dal valore atteso $l = (1.05 \pm 0.001) \, \text{m}$, con una variazione percentuale dal valore atteso del $\Delta_\% = \frac{l - \hat{l}}{l} * 100 \approx 1.2 \, \%$. Sebbene la variazione percentuale è molto piccola rispetto al valore atteso, non possiamo sicuramente affermare che la nostra misura sia "accurata" perché il nostro valore dista ben $5.8$ barre di errore rispetto al valore da noi atteso. Si può ipotizzare che ciò derivi dal fatto che il nostro modello teorico non contemplava gli attriti dell'aria e del perno di rotazione: pertanto la libreia \texttt{scipy} ha sottostimitato la lunghezza dell'asta per mettere in "accordo" il modello teorico con i $T$ da noi calcolati su cui hanno agito gli attriti dovuti all'aria e alla rotazione attorno al perno (che non sono minimamente contemplati dal nostro modello teorico), oltre al fatto che il pendolo, durante le sue oscillazioni, disperdeva energia muovendosi anche in altre direzioni. Nonostante ciò, si osserva dal grafico dei residui (\ref{fig:grafico_residui}) che questi oscillano, nelle barre di errore, intorno allo zero, indicando che non sono presenti degli errori sistematici (oppure che hanno influito minimamente) tali da sovrastimare o sottostimare il periodo del pendolo all'interno del nostro apparato sperimentale. \\
+Nonostante le nostre difficoltà e la poco accuratezza della misura, proprio per la variazione percentuale molto piccola, riteniamo sia comunque giusto considerare adeguato il modello teorico, sebbene sarebbe necessario, per dimostrare in maniera più accurata la reale validità del nostro modello teorico, ripetere nuovamente le misurazioni per cercare di diminuire la distanza in barre di errore fra il valore del best-fit $\hat{l}$ e il valore atteso provando a diminuire gli attriti presenti ed evitare che il pendolo si muova in altre direzioni, disperdendo energia cinetica.
 
 \end{document}
